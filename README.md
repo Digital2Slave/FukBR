@@ -49,6 +49,20 @@ $ tar -zxvf data.tar.gz
 
 
 
+## Test
+
+* **terminal** start mongodb server ``sudo mongod``
+
+* **config.py** set ``MONGODB_SERVER = 'localhost'``
+
+* **main.py** ``test(data[:10], cores=4)``
+
+
+![mongod](./file/mongod.png)
+
+![test](./file/test.png)
+
+
 ## Notethat
 
 *  '.UserAgentString.json'文件里面包含有**9502**个[PC浏览器](http://www.useragentstring.com/pages/Browserlist/)代理信息和**512**个[Mobile浏览器](http://www.useragentstring.com/pages/Mobile%20Browserlist/)代理信息。
