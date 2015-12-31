@@ -22,7 +22,7 @@ def help():
             Usage :
             $ python <name>.py --input=<isbnspath> --pool=<corenumber>
             eg:
-            $ python main.py --input='./file/data/isbns_i.json' --pool=4
+            $ python main.py --input='./file/data/isbns_0.json' --pool=4
         '''
 
 def isbn2bookdata(isbn):
@@ -53,10 +53,10 @@ def run(data, cores=4):
     pool.join()
 
 
-def test(data):
+def test(data, cores=4):
     # spark given number of processes
     print 'start......'
-    pool = Pool(4)
+    pool = Pool(cores)
     t1 = time.time()
 	# map to pool
     items = pool.map(isbn2bookdata, data)
@@ -66,7 +66,7 @@ def test(data):
     print t2-t1
     print 'bookdata done...'
 
-    pool = Pool(4)
+    pool = Pool(cores)
     pool.map(bookdata2mongoData, items)
     pool.close()
     pool.join()
@@ -98,3 +98,5 @@ if (__name__=='__main__'):
     for d in splitdatas:
         run(d, cores)
         time.sleep(3)
+
+    #test(data[:10], cores=4)
