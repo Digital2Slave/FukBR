@@ -94,6 +94,7 @@ if (__name__=='__main__'):
     step = 100
     splitdatas = [data[i:i+step] for i in xrange(0,len(data),step)]
 
+    cores = int(cores)
     # !< handle each
     for d in splitdatas:
         run(d, cores)
